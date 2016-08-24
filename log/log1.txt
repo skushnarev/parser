@@ -1,0 +1,10 @@
+217.118.95.113|10.01.2015|20:33|google.ru|mypage.com
+188.187.12.127|11.01.2015|10:03|google.com|mypage.com/shop/shapka
+2.94.194.190|2.03.2015|9:12|yandex.ru|mypage.com/index.html
+95.27.41.251|10.03.2015|5:41|google.ru|mypage.com/agg.php?ID=2
+82.208.124.100|11.05.2015|00:00|yandex.ru|mypage.com/free.html
+90.154.66.107|25.08.2015|20:38|google.ru|mypage.com/404.html
+2.94.194.190|3.02.2016|2:10|mypage.com/index.html|mypage.com
+188.187.12.127|9.04.2016|11:13|www.google.com|mypage.com/shop.html
+82.208.124.100|22.05.2016|18:20|google.ru|mypage.com
+5.141.122.88|18.08.2016|20:50|mypage.com|mypage.com/info.html
