@@ -8,3 +8,4 @@
 188.187.12.127|9.04.2016|11:13|www.google.com|mypage.com/shop.html
 82.208.124.100|22.05.2016|18:20|google.ru|mypage.com
 5.141.122.88|18.08.2016|20:50|mypage.com|mypage.com/info.html
+5.141.122.8A8|18.08.2016|20:50|mypage.com|mypage.com/info.html
