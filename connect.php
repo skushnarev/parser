@@ -1,9 +1,6 @@
 <?php
-$DB_host = 'localhost';
-$DB_port = '5432';
-$DB_dbname = 'parser';
-$DB_user = 'postgres';
-$DB_pass = 'pass';
+include "config.cfg"; 
 
-$dbconn = pg_connect('host='.$DB_host.' port='.$DB_port.' dbname='.$DB_dbname.' user='.$DB_user.' password='.$DB_pass.'');
+$connect = "host=".$cfg['DB']['host']." port=".$cfg['DB']['port']." dbname=".$cfg['DB']['dbname']." user=".$cfg['DB']['user']." password=".$cfg['DB']['pass']."";
+$dbconn = pg_connect($connect);
 ?>
