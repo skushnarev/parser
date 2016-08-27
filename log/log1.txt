@@ -1,4 +1,5 @@
 217.118.95.113|10.01.2015|20:33|google.ru|mypage.com
+217.118.95.113|10.01.2015|20:35|google.com|mypage.com
 188.187.12.127|11.01.2015|10:03|google.com|mypage.com/shop/shapka
 2.94.194.190|2.03.2015|9:12|yandex.ru|mypage.com/index.html
 95.27.41.251|10.03.2015|5:41|google.ru|mypage.com/agg.php?ID=2
@@ -9,4 +10,7 @@
 82.208.124.100|22.05.2016|18:20|google.ru|mypage.com"
 5.141.122.88|18.08.2016|20:50|mypage.com|mypage.com/info.html'
 5.141.122.8A8|18.08.2016|20:50|mypage.com|mypage.com/info.html
+90.154.66.107|18.08.2016|20:50|mypage.com|mypage.com/info.html
+90.154.66.107|18.08.2016|20:51|mypage.com|mypage.com/info.html
+90.154.66.107|18.08.2016|20:52|mypage.com|mypage.com/info.html
 5.141.122.88|18.08.2016|20:50|mypage.com|;DROP TABLE actions;
