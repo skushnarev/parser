@@ -33,14 +33,15 @@ store.load(); //  и немедленно загружаем данные
 var grid = Ext.create('Ext.grid.Panel', {
     store: store,               // определили хранилище
     //title: 'Array Grid',        // Заголовок
-    columns:[
-				{text: 'ID',       dataIndex: 'id'     },
-				{text: 'IP',       dataIndex: 'ip'     },
-				{text: 'Браузер',       dataIndex: 'br'     },
+    //height: 300,
+	columns:[
+				{text: '№',       dataIndex: 'id', width: 50     },
+				{text: 'IP',       dataIndex: 'ip' , width: 150    },
+				{text: 'Браузер',       dataIndex: 'br', width: 170      },
 				{text: 'Операционная система',       dataIndex: 'os'     },
-				{text: 'Последняя открытая страница',     dataIndex: 'urli'   },
-				{text: 'Вего уникальных страниц просмотрено',   dataIndex: 'urli_c' },
-				{text: 'Первый раз пришёл из',     dataIndex: 'urlo'   }
+				{text: 'Последняя открытая страница',     dataIndex: 'urli' , width: 400   },
+				{text: 'Уникальных страниц просмотрено',   dataIndex: 'urli_c', width: 50 },
+				{text: 'Первый раз пришёл из',     dataIndex: 'urlo', width: 400    }
             ],
 		dockedItems: [{   // bbar - нижний тулбар с листалкой
                 dock: 'bottom',
@@ -53,8 +54,11 @@ var grid = Ext.create('Ext.grid.Panel', {
 
 var win = Ext.create('widget.window', {
         title: 'Выборка уникальных IP',
+		maximizable: true,
+		y:0, 
         closeAction: 'hide',
-        width: 1200,
+		//height: '100%',
+        width: '100%',
         autoheight: true,
         items: [grid]
     }); 
