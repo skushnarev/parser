@@ -20,7 +20,7 @@ FROM ".$cfg['DB']['system']." b ";
 $result = pg_query($dbconn, $q);
 while ($actions = pg_fetch_assoc($result))
 {
-	echo $actions['ip']." ".$actions['br']." ".$actions['os']." ".$actions['urli']." ".$actions['urli_c']." ".$actions['urlo']."<br>";
+$n=0;
 	//echo '<pre>';
 	//print_r($actions);
 	//echo '</pre>';
