@@ -16,36 +16,48 @@
 
 <script>
 
-	var win1 = Ext.create('widget.window', {     // создание окна
-	  title: 'Пример 1',
-	  loader:{                         // определение загрузчика
-              url: 'get.php',
-              autoLoad: true
-          },
-	  autoHeight: true,
-	  width: '30%', // ширина. Строковое значение
-								  // задается по стандарту - px,%, em и т.д.
-								  // целое значение соответствует px
-	  closeAction: 'hide',       // Указание на то, что окно при закрывании
-								  // не удаляется вместе с содержимым,
-	  tbar: [                     // тулбар (toolbar) в верхней части окна
-			{text:'Первый'},      // массив кнопок. нетрудно догадаться,
-			'-',					  // что text = текст кнопки
-			{text:'Второй'},
-			'-',
-			{text:'Третий'},
-			'->',
-			{
-            text:'Close',
-            handler: function(){
-              win1.close()
-            }
-         }
-		   ],
-	bbar: [{ iconCls:'icon_example'}] // тулбар (bbar) в нижней  части окна
+var store = Ext.create('Ext.data.JsonStore', {     // определение хранилища для удаленного источника данных
+    fields: [{name: 'ip', type: 'float'}, 'ip', 'br', 'os', 'urli', {name: 'urli_c', type: 'float'}, 'urlo'],   // поля записей. каждая запись содержит - название городва и телефон
+    pageSize:2,                 // количество считываемх зАраз записей
+    proxy: {                    // описание proxy-объекта, кторый будет запрашивать сервер
+        type: 'ajax',           // тип прокси = Ajax
+        url: 'get.php',         // адрес удаленного источника данных
+        reader: {
+            type: 'json',       // тип данных - json, хотя есть и другие варианты
+            root: 'log'      // здесь свойство JSON объекта в котором передается сам массив данных
+        }
+    }
+});
+store.load(); //  и немедленно загружаем данные
 
-	});
+var grid = Ext.create('Ext.grid.Panel', {
+    store: store,               // определили хранилище
+    title: 'Array Grid',        // Заголовок
+    columns:[
+				{text: 'id',       dataIndex: 'id'     },
+				{text: 'ip',       dataIndex: 'ip'     },
+				{text: 'br',       dataIndex: 'br'     },
+				{text: 'os',       dataIndex: 'os'     },
+				{text: 'urli',     dataIndex: 'urli'   },
+				{text: 'urli_c',   dataIndex: 'urli_c' },
+				{text: 'urlo',     dataIndex: 'urlo'   }
+            ],
+		dockedItems: [{   // bbar - нижний тулбар с листалкой
+                dock: 'bottom',
+                xtype:'pagingtoolbar',
+                store:store,               // указано хранилище
+                displayInfo: true,          // вывести инфо обо общем числе записей
+                displayMsg: 'Показано  {0} - {1} из {2}' // формат инфо
+        }]
+});
 
+var win1 = Ext.create('widget.window', {
+        title: 'Пример',
+        closeAction: 'hide',
+        width: 1200,
+        height: 550,
+        items: [grid]
+    });
 </script>
 <button onclick="win1.show()">Клик-клак</button>
 

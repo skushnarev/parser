@@ -18,12 +18,22 @@ FROM ".$cfg['DB']['system']." b ";
 
 //echo $q.'<br>';
 $result = pg_query($dbconn, $q);
+//echo json_encode ($result);
+$n=0;
 while ($actions = pg_fetch_assoc($result))
 {
-$n=0;
+	$actions['id'] = ++$n;
+	$A[] = $actions; 
+	//echo ++$n." ".$actions['ip']." ".$actions['br']." ".$actions['os']." ".$actions['urli']." ".$actions['urli_c']." ".$actions['urlo']."<br>";
 	//echo '<pre>';
 	//print_r($actions);
 	//echo '</pre>';
 };
-		
+	//echo '<pre>';
+	//print_r($A);
+	//echo '</pre>';
+	
+echo json_encode(array('sucess'=>true,'total'=>count($A),'log'=>$A));
+//echo json_encode($A);
+	
 ?>
