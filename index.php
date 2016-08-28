@@ -18,7 +18,7 @@
 
 var store = Ext.create('Ext.data.JsonStore', {     // определение хранилища для удаленного источника данных
     fields: [{name: 'ip', type: 'float'}, 'ip', 'br', 'os', 'urli', {name: 'urli_c', type: 'float'}, 'urlo'],   // поля записей. каждая запись содержит - название городва и телефон
-    pageSize:2,                 // количество считываемх зАраз записей
+    //pageSize:2,                 // количество считываемх зАраз записей
     proxy: {                    // описание proxy-объекта, кторый будет запрашивать сервер
         type: 'ajax',           // тип прокси = Ajax
         url: 'get.php',         // адрес удаленного источника данных
@@ -32,15 +32,15 @@ store.load(); //  и немедленно загружаем данные
 
 var grid = Ext.create('Ext.grid.Panel', {
     store: store,               // определили хранилище
-    title: 'Array Grid',        // Заголовок
+    //title: 'Array Grid',        // Заголовок
     columns:[
-				{text: 'id',       dataIndex: 'id'     },
-				{text: 'ip',       dataIndex: 'ip'     },
-				{text: 'br',       dataIndex: 'br'     },
-				{text: 'os',       dataIndex: 'os'     },
-				{text: 'urli',     dataIndex: 'urli'   },
-				{text: 'urli_c',   dataIndex: 'urli_c' },
-				{text: 'urlo',     dataIndex: 'urlo'   }
+				{text: 'ID',       dataIndex: 'id'     },
+				{text: 'IP',       dataIndex: 'ip'     },
+				{text: 'Браузер',       dataIndex: 'br'     },
+				{text: 'Операционная система',       dataIndex: 'os'     },
+				{text: 'Последняя открытая страница',     dataIndex: 'urli'   },
+				{text: 'Вего уникальных страниц просмотрено',   dataIndex: 'urli_c' },
+				{text: 'Первый раз пришёл из',     dataIndex: 'urlo'   }
             ],
 		dockedItems: [{   // bbar - нижний тулбар с листалкой
                 dock: 'bottom',
@@ -51,15 +51,17 @@ var grid = Ext.create('Ext.grid.Panel', {
         }]
 });
 
-var win1 = Ext.create('widget.window', {
-        title: 'Пример',
+var win = Ext.create('widget.window', {
+        title: 'Выборка уникальных IP',
         closeAction: 'hide',
         width: 1200,
-        height: 550,
+        autoheight: true,
         items: [grid]
-    });
+    }); 
+	
+Ext.onReady(function(){win.show()}); 
+
 </script>
-<button onclick="win1.show()">Клик-клак</button>
 
 </head>
 
