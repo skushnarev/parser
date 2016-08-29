@@ -5,9 +5,11 @@ include 'connect.php';
 $TZ= "SET TIME ZONE '".date_default_timezone_get()."'";
 pg_query($dbconn, $TZ);
 
-pg_query("COPY ".$cfg['DB']['actions']." (ip, dt, tm, urlo, urli) FROM '".$cfg['LF']['log1']."' (DELIMITER '".$cfg['LF']['DELIMITER']."');");
-pg_query("COPY ".$cfg['DB']['system']." (ip, br, os) FROM '".$cfg['LF']['log2']."' (DELIMITER '".$cfg['LF']['DELIMITER']."');");
+$a = pg_query("COPY ".$cfg['DB']['actions']." (ip, dt, tm, urlo, urli) FROM '".$cfg['LF']['log1']."' (DELIMITER '".$cfg['LF']['DELIMITER']."');");
+$b = pg_query("COPY ".$cfg['DB']['system']." (ip, br, os) FROM '".$cfg['LF']['log2']."' (DELIMITER '".$cfg['LF']['DELIMITER']."');");
 
+if ($a <> false) echo "Файл <b>".$cfg['LF']['log1']."</b> pзагружен в базу <b>".$cfg['DB']['actions']."</b>.<br>";
+if ($b <> false) echo "Файл <b>".$cfg['LF']['log2']."</b> pзагружен в базу <b>".$cfg['DB']['system']."</b>.<br>";
 
 //------ не актуален ------\/---
 function rt($log, $reg, $table)
