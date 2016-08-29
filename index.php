@@ -15,17 +15,16 @@
 
 var store = Ext.create('Ext.data.JsonStore', {    
     fields: [{name: 'ip', type: 'float'}, 'ip', 'br', 'os', 'urli', {name: 'urli_c', type: 'float'}, 'urlo'],  
-    //pageSize: 3,                 // количество считываемх за раз записей
-    proxy: {                    // описание proxy-объекта, кторый будет запрашивать сервер
-        type: 'ajax',           // тип прокси = Ajax
-        url: 'get.php?get=0',         // адрес удаленного источника данных
+    proxy: {                    
+        type: 'ajax',         
+        url: 'get.php?get=0', 
         reader: {
-            type: 'json',       // тип данных - json, хотя есть и другие варианты
-            root: 'log'      // здесь свойство JSON объекта в котором передается сам массив данных
+            type: 'json',     
+            root: 'log'     
         }
     }
 });
-store.load(); //  и немедленно загружаем данные
+store.load();
 
 var grid = Ext.create('Ext.grid.Panel', {
     store: store,               
