@@ -18,7 +18,7 @@
 
 var store = Ext.create('Ext.data.JsonStore', {     // определение хранилища для удаленного источника данных
     fields: [{name: 'ip', type: 'float'}, 'ip', 'br', 'os', 'urli', {name: 'urli_c', type: 'float'}, 'urlo'],   // поля записей. каждая запись содержит - название городва и телефон
-    //pageSize:2,                 // количество считываемх зАраз записей
+    //pageSize: 3,                 // количество считываемх за раз записей
     proxy: {                    // описание proxy-объекта, кторый будет запрашивать сервер
         type: 'ajax',           // тип прокси = Ajax
         url: 'get.php',         // адрес удаленного источника данных
@@ -34,14 +34,28 @@ var grid = Ext.create('Ext.grid.Panel', {
     store: store,               // определили хранилище
     //title: 'Array Grid',        // Заголовок
     //height: 300,
+	plugins: 'gridfilters',
 	columns:[
-				{text: '№',       dataIndex: 'id', width: 50     },
-				{text: 'IP',       dataIndex: 'ip' , width: 150    },
-				{text: 'Браузер',       dataIndex: 'br', width: 170      },
-				{text: 'Операционная система',       dataIndex: 'os'     },
-				{text: 'Последняя открытая страница',     dataIndex: 'urli' , width: 400   },
-				{text: 'Уникальных страниц просмотрено',   dataIndex: 'urli_c', width: 50 },
-				{text: 'Первый раз пришёл из',     dataIndex: 'urlo', width: 400    }
+				{text: '№',       dataIndex: 'id', flex: 1     },
+				{
+					text: 'IP',
+					dataIndex: 'ip',
+					flex: 2,
+					filter: {
+						// required configs
+						type: 'string',
+						// optional configs
+						//value: '',  // setting a value makes the filter active.
+						itemDefaults: {
+							// any Ext.form.field.Text configs accepted
+						}
+					}				
+				},
+				{text: 'Браузер',       dataIndex: 'br', flex: 2      },
+				{text: 'Операционная система',       dataIndex: 'os' ,flex: 2    },
+				{text: 'Последняя открытая страница',     dataIndex: 'urli' , flex: 6   },
+				{text: 'Уникальных страниц просмотрено',   dataIndex: 'urli_c', flex: 1 },
+				{text: 'Первый раз пришёл из',     dataIndex: 'urlo', flex: 6    }
             ],
 		dockedItems: [{   // bbar - нижний тулбар с листалкой
                 dock: 'bottom',
@@ -64,6 +78,7 @@ var win = Ext.create('widget.window', {
     }); 
 	
 Ext.onReady(function(){win.show()}); 
+
 
 </script>
 
